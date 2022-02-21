@@ -1,0 +1,23 @@
+<form *ngIf="email" [formGroup]="form">
+    <ion-grid>
+        <div align="center">
+            <ion-row>
+                <ion-col>
+                    <ion-item>
+                        <ion-label position="floating">Mennyiség</ion-label>
+                        <ion-input type="number" min="1" placeholder="Mennyiség" ngDefaultControl focus formControlName="quantity"></ion-input>
+                    </ion-item>
+                </ion-col> 
+            </ion-row>
+        </div>
+        <div align="center">
+            <ion-row>
+                <ion-col>
+                    <ion-button (click)="addCart()">
+                        <ion-icon name="cart-outline"></ion-icon>
+                    </ion-button>
+                </ion-col>
+            </ion-row>
+        </div>
+    </ion-grid> 
+</form>

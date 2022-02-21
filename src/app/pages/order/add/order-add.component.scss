@@ -1,0 +1,52 @@
+.mat-stepper-horizontal {
+    margin-top: 8px;
+}
+  
+input{
+    color: black;
+}
+
+form{
+    margin-top: 20px;
+}
+
+label{
+    color:black
+}
+
+mat-radio-button{
+    color: black;
+}
+
+.example-radio-group {
+    display: flex;
+    flex-direction: column;
+    margin: 15px 0;
+  }
+  
+  .example-radio-button {
+    margin: 5px;
+  }
+
+  .picture{
+    max-width: 80px;
+    max-height: 70px;
+}
+
+table {
+    width: 100%;
+}
+
+.amount{
+    color: black;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+ion-item{
+    max-width: 10%;
+}
+
+.beforebutton{
+    margin-right: 5px;
+}

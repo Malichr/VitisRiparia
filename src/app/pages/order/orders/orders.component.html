@@ -1,0 +1,24 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-searchbar name="fieldName" ngDefaultControl placeholder="Keresés" [(ngModel)]='searchTerm' showCancelButton='focus' animated>
+    </ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <app-container classes="container-1 flex">
+      <ion-card class="item" *ngFor="let order of orders | async | filter:searchTerm">
+            <div align="center">
+              <img mat-card-image src="{{order.picture}}" alt="Bor">
+            </div>
+            <ion-card-content>
+              <p class="name">{{order.productName}}</p>
+              <p class="price">{{order.price}} Ft</p>
+              <p class="quantity">{{order.quantity}} db</p>
+            </ion-card-content>
+      </ion-card>
+  </app-container>
+</ion-content>

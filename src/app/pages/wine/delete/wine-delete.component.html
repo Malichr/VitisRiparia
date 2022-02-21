@@ -1,0 +1,5 @@
+<p>Biztosan törölni szeretné a következő terméket: {{data.wineName}} ?</p>
+<div *ngIf="wine" style="display: flex; justify-content: flex-end;">
+    <ion-button (click)="dialogRef.close()" class="margin-right">Mégsem</ion-button>
+    <ion-button (click)="delete()" color="danger">Törlés</ion-button>
+</div>

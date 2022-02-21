@@ -1,0 +1,17 @@
+<div align="end">
+    <ion-button class="x-btn" (click)="close()">
+        <ion-icon name="close-outline"></ion-icon>
+    </ion-button>
+</div>
+<ng-container *ngIf="this.data.paidFor === true; else elseTemplate">
+    <div align="center">
+        <img src="./assets/success.png"/>
+        <p>Sikeres fizetés!</p>
+    </div>
+</ng-container>
+<ng-template #elseTemplate>
+    <div align="center">
+        <img src="./assets/failure.png"/>
+        <p>Sikertelen fizetés!</p>
+    </div>
+</ng-template>

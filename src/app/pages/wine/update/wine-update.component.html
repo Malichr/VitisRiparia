@@ -1,0 +1,93 @@
+<form [formGroup]="form">
+    <h3>Bor módosítás</h3>
+    <ion-content>
+        <ion-item>
+            <ion-label position="floating">Terméknév*</ion-label>
+            <ion-input placeholder="Terméknév" formControlName="productName" ngDefaultControl></ion-input>
+        </ion-item>
+        <br>
+        <ion-item>
+            <ion-label position="floating">Ár*</ion-label>
+            <ion-input placeholder="Ár" formControlName="price" ngDefaultControl></ion-input>
+        </ion-item>
+        <br>
+        <ion-item>
+            <ion-label position="floating">Borászat</ion-label>
+            <ion-input placeholder="Borászat" formControlName="winery" ngDefaultControl></ion-input>
+        </ion-item>
+        <br>
+        <ion-item>
+            <ion-label position="floating">Egységár</ion-label>
+            <ion-input placeholder="Egységár" formControlName="unitPrice" ngDefaultControl></ion-input>
+        </ion-item>
+        <br>
+        <ion-item>
+            <ion-label position="floating">Cikkszám</ion-label>
+            <ion-input placeholder="Cikkszám" formControlName="articleNumber" ngDefaultControl></ion-input>
+        </ion-item>
+        <br>
+        <ion-item>
+            <ion-label position="floating">Évjárat*</ion-label>
+            <ion-input placeholder="Évjárat" formControlName="vintage" ngDefaultControl></ion-input>
+        </ion-item>
+        <br>
+        <ion-item>
+            <ion-label position="floating">Űrtartalom*</ion-label>
+            <ion-input placeholder="Űrtartalom" formControlName="packaging" ngDefaultControl></ion-input>
+        </ion-item>
+        <br>
+        <ion-item>
+            <ion-label position="floating">Borvidék</ion-label>
+            <ion-input placeholder="Borvidék" formControlName="wineRegion" ngDefaultControl></ion-input>
+        </ion-item>
+        <br>
+        <ion-item>
+            <ion-label position="floating">Ország</ion-label>
+            <ion-input placeholder="Ország" formControlName="country" ngDefaultControl></ion-input>
+        </ion-item> 
+        <br>
+        <ion-item>
+            <ion-label position="floating">Szőlőfajta</ion-label>
+            <ion-input placeholder="Szőlőfajta" formControlName="grapeVariety" ngDefaultControl></ion-input>
+        </ion-item>
+        <br>
+        <ion-item>
+            <ion-label position="floating">Borstílus</ion-label>
+            <ion-input placeholder="Borstílus" formControlName="wineStyle" ngDefaultControl></ion-input>
+        </ion-item>
+        <br>
+        <mat-form-field>
+            <mat-label>Jelleg</mat-label>
+            <mat-select formControlName="nature">
+                <mat-option *ngFor="let nature of natures" [value]="nature.value">
+                {{nature.viewValue}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+            <mat-label>Szín</mat-label>
+            <mat-select formControlName="color">
+                <mat-option *ngFor="let color of colors" [value]="color.value">
+                {{color.viewValue}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field> 
+        <br>
+        <input type="file" (change)="uploadFile($event)" formControlName="picture">
+        <br><br>
+
+        <div class="upload-progress" *ngIf="(uploadPercent$ | async) as percentage">
+            Feltöltési folyamat:
+            <ion-progress-bar class="progress-bar" [value]="percentage">
+                
+            </ion-progress-bar>
+
+            <span>{{percentage / 100 | percent}}</span>
+        </div>
+    </ion-content>
+    <div style="display: flex; justify-content: flex-end;">
+      <ion-button fill="clear" (click)="dialogRef.close()" class="margin-right">MÉGSEM</ion-button>
+      <ion-button fill="clear" [mat-dialog-close]="form.value" [disabled]="form.invalid">MÓDOSÍT</ion-button>
+    </div>
+</form>

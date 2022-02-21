@@ -1,0 +1,36 @@
+  <button mat-button  class="x-btn" (click)="close()">
+    <mat-icon>close</mat-icon>
+  </button>
+
+  <div class="centering">
+    <form [formGroup]="form" (ngSubmit)="login()" (keydown.enter)="$event.preventDefault()">
+      <h3>Bejelentkezés</h3>
+      
+      <ion-card id="alertCard" class="alert" *ngIf="alertMessage">
+        {{alertMessage}}
+      </ion-card>
+
+      <mat-form-field class="max-width">
+        <mat-label>E-mail</mat-label>
+        <input type="email" name="email" matInput placeholder="E-mail" formControlName="email">
+      </mat-form-field>
+
+      <br>
+
+      <mat-form-field class="max-width">
+        <mat-label>Jelszó</mat-label>
+        <input type="password" name="password" matInput [type]="hide ? 'password' : 'text'" minlength="8" placeholder="Jelszó"
+          formControlName="password">
+        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+      </mat-form-field>
+
+      <br><br>
+      
+      <button type="submit" mat-raised-button color="primary" class="max-width" [disabled]="form.invalid">
+        BEJELENTKEZÉS
+      </button>
+    </form>
+  </div>
+  

@@ -1,0 +1,160 @@
+<div align="end">
+  <ion-button class="x-btn" fill="clear" (click)="close()">
+    <ion-icon name="close-outline"></ion-icon>
+  </ion-button>
+</div>
+
+<ion-content>
+  <div align="center">
+    <ion-card *ngIf="inData | async as item">
+      <img src="{{item.picture}}" alt="Bor">
+      <ion-card-header>
+        <ion-card-title>
+          <p>{{item.productName}} {{item.vintage}} ({{item.packaging}}l)</p>
+        </ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content  class="wrapper">
+        <ion-grid class="square">
+          <ion-row>
+            <ion-col>
+              Ár
+            </ion-col>
+            <ion-col>
+              {{item.price}} Ft
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              Borászat
+            </ion-col>
+            <ion-col>
+              {{item.winery}}
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              Egységár
+            </ion-col>
+            <ion-col>
+              {{item.unitPrice}} Ft
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              Cikkszám
+            </ion-col>
+            <ion-col>
+              {{item.articleNumber}}
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+        <app-cart-add></app-cart-add>
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+  <mat-tab-group>
+    <mat-tab label="Áttekintés">
+        <div align="center">
+          <ion-card>
+            <ion-grid *ngIf="inData | async as item">
+                <ion-row>
+                  <ion-col class="header">
+                    Évjárat:
+                  </ion-col> 
+                  <ion-col>
+                    {{item.vintage}}
+                  </ion-col> 
+                </ion-row>
+                <ion-row>
+                  <ion-col class="header">
+                    Pincészet:
+                  </ion-col> 
+                  <ion-col>
+                    {{item.winery}}
+                  </ion-col> 
+                </ion-row>
+                <ion-row>
+                  <ion-col class="header">
+                    Szín:
+                  </ion-col> 
+                  <ion-col>
+                    {{item.color}}
+                  </ion-col> 
+                </ion-row>
+                <ion-row>
+                  <ion-col class="header">
+                    Kiszerelés:
+                  </ion-col> 
+                  <ion-col>
+                    {{item.packaging}}
+                  </ion-col> 
+                </ion-row>
+                <ion-row>
+                  <ion-col class="header">
+                    Borvidék:
+                  </ion-col> 
+                  <ion-col>
+                    {{item.wineRegion}}
+                  </ion-col> 
+                </ion-row>
+                <ion-row>
+                  <ion-col class="header">
+                    Ország:
+                  </ion-col> 
+                  <ion-col>
+                    {{item.country}}
+                  </ion-col> 
+                </ion-row>
+                <ion-row>
+                  <ion-col class="header">
+                    Szőlőfajta:
+                  </ion-col> 
+                  <ion-col>
+                    {{item.grapeVariety}}
+                  </ion-col> 
+                </ion-row>
+                <ion-row>
+                  <ion-col class="header">
+                    Jelleg:
+                  </ion-col> 
+                  <ion-col>
+                    {{item.nature}}
+                  </ion-col> 
+                </ion-row>
+                <ion-row>
+                  <ion-col class="header">
+                    Borstílus:
+                  </ion-col> 
+                  <ion-col>
+                    {{item.wineStyle}}
+                  </ion-col> 
+                </ion-row>
+                <ion-row *ngIf="this.dataNameStr === 'champagne'">
+                  <ion-col class="header">
+                    Eljárás:
+                  </ion-col> 
+                  <ion-col>
+                    {{item.procedure}}
+                  </ion-col> 
+                </ion-row>
+            </ion-grid>
+          </ion-card>
+        </div>
+        <div align="center">
+          <ion-card>
+            <ion-text color="dark">
+              QR navigálás mobil eszközön
+            </ion-text>
+            <br><br>
+            <qr-code [value]="qrInfo"></qr-code>
+          </ion-card>
+        </div>
+    </mat-tab>
+    <mat-tab label="Megjegyzések">
+      <app-comment></app-comment>
+   </mat-tab>
+  </mat-tab-group>
+</ion-content>
+  

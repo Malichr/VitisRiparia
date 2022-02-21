@@ -1,0 +1,156 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+      <ion-text>
+        <h1>Rendelés</h1>
+      </ion-text>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <mat-horizontal-stepper [linear]="true" #stepper>
+      <mat-step [stepControl]="form">
+        <div align="center">
+          <form [formGroup]="form">
+            <ng-template matStepLabel>Kapcsolati adatok</ng-template>
+
+            <ion-item>
+              <ion-label position="floating">Keresztnév*</ion-label>
+              <ion-input placeholder="Keresztnév" formControlName="firstName" ngDefaultControl required></ion-input>
+            </ion-item>
+            
+            <br>
+
+            <ion-item>
+              <ion-label position="floating">Vezetéknév*</ion-label>
+              <ion-input placeholder="Vezetéknév" formControlName="lastName" ngDefaultControl required></ion-input>
+            </ion-item>
+
+            <br>
+
+            <ion-item>
+              <ion-label position="floating">Telefonszám*</ion-label>
+              <ion-input type="tel" placeholder="Telefonszám" formControlName="phoneNumber" ngDefaultControl required></ion-input>
+            </ion-item>
+
+            <br>
+
+            <div>
+              <button mat-raised-button matStepperNext>Szállítási adatok
+                <mat-icon>navigate_next</mat-icon>
+              </button>
+            </div>
+          </form>
+        </div>
+      </mat-step>
+
+      <mat-step [stepControl]="form2" label="Szállítási adatok">
+        <div align="center">
+          <form [formGroup]="form2">
+            <ion-item>
+              <ion-label position="floating">Irányítószám*</ion-label>
+              <ion-input  type="number" placeholder="Irányítószám" formControlName="postalCode" ngDefaultControl required></ion-input>
+            </ion-item>
+
+            <br>
+
+            <ion-item>
+              <ion-label position="floating">Település*</ion-label>
+              <ion-input placeholder="Település" formControlName="settlement" ngDefaultControl required></ion-input>
+            </ion-item>
+
+            <br>
+
+            <ion-item>
+              <ion-label position="floating">Utca*</ion-label>
+              <ion-input placeholder="Utca" formControlName="street" ngDefaultControl required></ion-input>
+            </ion-item>
+
+            <br>
+
+            <ion-item>
+              <ion-label position="floating">Házszám*</ion-label>
+              <ion-input  type="number" placeholder="Házszám" formControlName="houseNumber" ngDefaultControl required></ion-input>
+            </ion-item>
+
+            <br>
+
+            <div>
+              <button class="beforebutton" mat-raised-button matStepperPrevious>
+                <mat-icon>navigate_before</mat-icon>
+                Kapcsolati adatok
+              </button>
+              <button mat-raised-button matStepperNext>Fizetés
+                <mat-icon>navigate_next</mat-icon>
+              </button>
+            </div>
+          </form>
+        </div>
+      </mat-step>
+
+      <mat-step>
+        <ng-template matStepLabel>Összegzés és fizetés</ng-template>
+        <p>Összegzés</p>
+        <div>
+          <app-container classes="container-1 flex">
+            <ion-card class="item">
+              <ion-card-header>
+                <ion-card-title>Elérhetőség</ion-card-title>
+              </ion-card-header>
+              <ion-card-content>
+                <p>{{this.form.value.firstName}}</p>
+                <p>{{this.form.value.lastName}}</p>
+                <p>{{this.form.value.phoneNumber}}</p>
+              </ion-card-content>
+            </ion-card>
+        
+            <ion-card class="item">
+              <ion-card-header>
+                <ion-card-title>Szállítás</ion-card-title>
+              </ion-card-header>
+              <ion-card-content>
+                <p>{{this.form2.value.postalCode}}</p>
+                <p>{{this.form2.value.settlement}}</p>
+                <p>{{this.form2.value.street}}</p>
+                <p>{{this.form2.value.houseNumber}}</p>
+              </ion-card-content>
+            </ion-card>
+          </app-container>
+
+          <app-container>
+            <ion-list>
+              <ion-item *ngFor=" let cart of carts | async">
+                <ion-avatar slot="start">
+                  <img src="{{cart.picture}}" />
+                </ion-avatar>
+                <ion-label>
+                  <p>{{cart.productName}}</p>
+                  <p>{{cart.price}} Ft</p>
+                  <p>{{cart.quantity}} db</p>
+                </ion-label>
+              </ion-item>
+            </ion-list>
+
+            <div class="amount">
+              <p>Összesen: {{amount}} Ft</p>
+            </div>
+
+            <div align="center">
+              <button mat-raised-button matStepperPrevious class="beforebutton">
+                <mat-icon>navigate_before</mat-icon>
+                Szállítási adatok
+              </button>
+              <button mat-raised-button (click)="stepper.reset()">Újra
+                <mat-icon>restart_alt</mat-icon>
+              </button>
+            </div>
+          </app-container>
+
+          <br><br>
+          <div #paypal align="center"></div>
+        </div>
+      </mat-step>
+    </mat-horizontal-stepper>
+</ion-content>

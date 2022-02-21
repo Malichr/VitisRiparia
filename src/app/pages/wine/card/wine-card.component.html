@@ -1,0 +1,21 @@
+<ion-card class="item" id="product" *ngIf="wine" (click)="getWine.emit(wine)" appOnHover class="ion-activatable ripple-parent">
+  <ion-ripple-effect></ion-ripple-effect>
+  <div align="center">
+    <img src="{{wine.picture}}" alt="Bor">
+  </div>
+  <ion-card-content>
+    <p class="name">{{wine.productName}} {{wine.vintage}} ({{wine.packaging}}l)</p>
+    <p class="price">{{wine.price}} Ft</p>
+  </ion-card-content>
+</ion-card>
+
+<ion-card class="item" appOnHover *ngIf="uid === 'zqB8wNNJXDgqKqR4R4uCGixupDi1'">
+  <ion-item class="action-btn">
+    <ion-fab-button class="deletebutton" color="danger" (click)="deleteItem(wine.id, wine.productName!, wine.picture)">
+      <ion-icon name="trash-outline"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-button (click)="updateItem()">
+      <ion-icon name="create-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-item>
+</ion-card>

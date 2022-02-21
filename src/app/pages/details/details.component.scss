@@ -1,0 +1,35 @@
+ion-grid{
+  color: black;
+  max-width: 600px;
+  text-align: justify;
+}
+
+ion-content{
+  height: 200px;
+}
+
+ion-card{
+  max-width: 600px;
+}
+
+.x-btn{
+  margin-right: 20px;
+}
+
+img{
+  height: 40vh;
+  max-width: 306px;
+}
+
+.square {
+  width: 50%;
+  margin-left: 32%;
+}
+
+.wrapper {
+  display: grid;
+  height: 100%;
+  width: 100%;
+  align-items: center;
+  justify-items: center;
+}

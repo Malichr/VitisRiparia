@@ -1,0 +1,5 @@
+<p>Biztosan törölni szeretné {{data.email}} rendelését?</p>
+<div *ngIf="order" style="display: flex; justify-content: flex-end;">
+    <ion-button (click)="dialogRef.close()" class="margin-right">Mégsem</ion-button>
+    <ion-button (click)="delete()" color="danger">Törlés</ion-button>
+</div>

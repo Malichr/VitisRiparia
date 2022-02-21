@@ -1,0 +1,24 @@
+<ion-content>
+  <form *ngIf="email" [formGroup]="form" class="max-width">
+    <ion-item class="max-width">
+      <ion-textarea matInput placeholder="Megjegyzés" ngDefaultControl formControlName="comment"></ion-textarea>
+    </ion-item>
+    <div style="display: flex; justify-content: flex-end;">
+      <ion-button fill="clear" type="reset" class="margin-right">
+        MÉGSEM
+      </ion-button>
+      <ion-button type="submit" color="primary" (click)="addComment()">
+        MEGJEGYZÉS
+      </ion-button>
+    </div>
+  </form>
+
+  <ion-list *ngFor=" let item of comments | async">
+    <ion-item>
+      <ion-label>
+        <p class="email">{{item.userEmail}}</p>
+        <p> {{item.comment}}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>

@@ -1,0 +1,20 @@
+<ion-card class="item" *ngIf="order" (click)="getOrder.emit(order)" appOnHover class="ion-activatable ripple-parent">
+  <ion-ripple-effect></ion-ripple-effect>
+  <ion-card-header>
+    <ion-card-title>{{order.userEmail}}</ion-card-title>
+  </ion-card-header>
+  <ion-card-content>
+    <p>Keresztnév: {{order.firstName}}</p>
+    <p>Vezetéknév: {{order.lastName}}</p>
+    <p>Telefonszám: {{order.phoneNumber}}</p>
+    <p>Cím: {{order.postalCode}}, {{order.settlement}} {{order.street}} {{order.houseNumber}}</p>
+  </ion-card-content>
+</ion-card>
+
+<ion-card class="item" appOnHover>
+  <ion-item class="action-btn">
+    <ion-fab-button class="deletebutton" color="danger" (click)="deleteItem(order.id, order.userEmail!)">
+      <ion-icon name="trash-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-item>
+</ion-card>

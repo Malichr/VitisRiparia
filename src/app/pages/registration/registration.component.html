@@ -1,0 +1,53 @@
+<button mat-button  class="x-btn" (click)="close()">
+  <mat-icon>close</mat-icon>
+</button>
+
+<div class="centering">
+  <form [formGroup]="form" (ngSubmit)="registration()" (keydown.enter)="$event.preventDefault()">
+    <h3>Regisztráció</h3>
+    <mat-form-field class="max-width">
+      <mat-label>E-mail</mat-label>
+      <input type="email" name="email" matInput placeholder="E-mail" formControlName="email">
+      <mat-hint>someone@example.com</mat-hint>
+    </mat-form-field>
+        
+    <br>
+        
+    <mat-form-field class="max-width">
+      <mat-label>Jelszó</mat-label>
+      <input type="password" name="password" matInput [type]="hidepass ? 'password' : 'text'" placeholder="Jelszó"
+        formControlName="password1">
+      <mat-hint align="end">min. hossz 8 / {{form.value.password1.length}}</mat-hint>
+      <button mat-icon-button matSuffix (click)="hidepass = !hidepass" [attr.aria-label]="'Hide password'"
+        [attr.aria-pressed]="hidepass">
+        <mat-icon>{{hidepass ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button>  
+    </mat-form-field>
+        
+    <br>
+        
+    <mat-form-field class="max-width">
+      <mat-label>Jelszó újra</mat-label>
+      <input type="password" name="password" matInput [type]="hidepass2 ? 'password' : 'text'" #password2 placeholder="Jelszó újra"
+        formControlName="password2">
+      <mat-hint align="end">min. hossz 8 / {{password2.value.length}}</mat-hint>
+      <button mat-icon-button matSuffix (click)="hidepass2 = !hidepass2" [attr.aria-label]="'Hide password'"
+        [attr.aria-pressed]="hidepass2">
+        <mat-icon>{{hidepass2 ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button>
+    </mat-form-field>
+
+    <mat-chip-list *ngIf="error">
+      <mat-chip color="warn" class="max-width" style="margin-top: 16px;" selected>
+         A jelszó megerősítés nem egyezik
+      </mat-chip>
+    </mat-chip-list>
+        
+    <br><br>
+        
+    <button type="submit" mat-raised-button color="primary" class="max-width" [disabled]="form.invalid">
+      REGISZTRÁCIÓ
+    </button>
+  </form>
+</div>
+  

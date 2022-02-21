@@ -1,0 +1,61 @@
+<ion-app>
+  <ion-split-pane contentId="main-content">
+    <ion-menu contentId="main-content" type="overlay">
+      <ion-content>
+        <ion-list id="menu-list">
+          <ion-item [routerLink]="[ '/' ]">
+            <ion-label class="title">Vitis Riparia</ion-label>
+          </ion-item>
+
+          <br>
+          
+          <ion-menu-toggle auto-hide="false">
+            <ion-item *ngFor="let menu of menus; let i = index" routerDirection="root" [routerLink]="[menu.url]" lines="none" detail="false" routerLinkActive="selected">
+              <ion-icon slot="start" name="{{menu.icon}}"></ion-icon>
+              <ion-label>{{ menu.title }}</ion-label>
+            </ion-item>
+
+            <ion-list>
+                <ion-item *ngIf="isLoggedOut$ | async" lines="none" (click)="openLoginDialog()">
+                  <ion-icon slot="start" name="log-in-outline"></ion-icon>
+                  <ion-label>Bejelentkezés</ion-label>
+                </ion-item>
+  
+                <ion-item *ngIf="isLoggedOut$ | async" lines="none" (click)="openRegistrationDialog()">
+                  <ion-icon slot="start" name="person-add-outline"></ion-icon>
+                  <ion-label>Regisztráció</ion-label>
+                </ion-item>
+
+                <ion-item *ngIf="!currentPlatform" lines="none" (click)="startScan()">
+                  <ion-icon slot="start" name="qr-code-outline"></ion-icon>
+                  <ion-label>QR navigáció</ion-label>
+                </ion-item>
+
+                <ion-item *ngIf="isLoggedIn$ | async" lines="none">
+                  <ion-icon slot="start" name="person-outline"></ion-icon>
+                  <ion-label>{{email}}</ion-label>
+                </ion-item>
+    
+                <ion-item *ngIf="isLoggedIn$ | async" lines="none" (click)="openCartListDialog()">
+                  <ion-icon slot="start" name="cart-outline"></ion-icon>
+                  <ion-label>Kosár</ion-label>
+                  <ion-badge color="danger" slot="end" mode="ios">{{cartLength}}</ion-badge>
+                </ion-item>
+        
+                <ion-item *ngIf="uid === 'zqB8wNNJXDgqKqR4R4uCGixupDi1'" lines="none" [routerLink]="[ '/order' ]">
+                  <ion-icon slot="start" name="bag-outline"></ion-icon>
+                  <ion-label>Rendelések</ion-label>
+                </ion-item>
+
+                <ion-item *ngIf="isLoggedIn$ | async" lines="none" (click)="logout()">
+                  <ion-icon slot="start" name="log-out-outline"></ion-icon>
+                  <ion-label>Kijelentkezés</ion-label>
+                </ion-item>
+            </ion-list>
+          </ion-menu-toggle>
+        </ion-list>
+      </ion-content>
+    </ion-menu>
+    <ion-router-outlet id="main-content"></ion-router-outlet>
+  </ion-split-pane>
+</ion-app>

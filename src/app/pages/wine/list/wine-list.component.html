@@ -1,0 +1,36 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-searchbar name="fieldName" ngDefaultControl placeholder="Keresés" [(ngModel)]='searchTerm' showCancelButton='focus' animated>
+    </ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <app-container classes="container-1 flex">
+      <ng-container *ngIf="(list$) | async as list; else loadingOrError">
+        <app-wine-card class="item" *ngFor="let item of list | filter:searchTerm" [wine]="item" (getWine)="onGetWine($event)"></app-wine-card>
+        <br>
+      </ng-container>
+      <ng-template #loadingOrError>
+        <ng-container *ngIf="errorObject; else loading">
+          <span class="centering">
+            Valami hiba történt!
+          </span>
+        </ng-container>
+        <ng-template #loading>
+          <span class="centering">
+            <ion-spinner name="crescent" color="primary"></ion-spinner>
+          </span>
+        </ng-template>
+      </ng-template>
+    </app-container>
+    
+    <ion-item lines="none">
+      <ion-fab-button color="primary" class="action-btn" (click)="wineAddDialog()" *ngIf="adminUid === 'zqB8wNNJXDgqKqR4R4uCGixupDi1'">
+        <ion-icon name="add-outline"></ion-icon>
+      </ion-fab-button>
+    </ion-item>
+</ion-content>
