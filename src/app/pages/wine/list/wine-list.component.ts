@@ -49,12 +49,8 @@ export class WineListComponent implements OnInit {
     const dialogRef = this.dialog.open(WineAddComponent, {});
     // tslint:disable-next-line: deprecation
     dialogRef.afterClosed().subscribe((wine: Wine) => {
-      //console.log(wine);
-      //if (wine?.productName) {
         this.service.add('wine', wine).then(id => { /*console.log(id);*/ });
-      //}
     }, err => {
-      //console.warn(err);
     });
   }
 

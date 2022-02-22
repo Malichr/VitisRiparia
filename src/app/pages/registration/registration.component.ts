@@ -27,7 +27,6 @@ export class RegistrationComponent {
     this.error = false;
     if (this.form.valid) {
       if (this.form.value.password1 === this.form.value.password2) {
-        //console.log(this.form.value);
         this.authService.createUser(this.form.value.email, this.form.value.password1);
         this.router.navigateByUrl('/login');
         this.dialogRef.close();

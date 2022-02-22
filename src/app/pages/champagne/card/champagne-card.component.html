@@ -5,12 +5,13 @@
     <img src="{{champagne.picture}}" alt="Petsgő">
   </div>
   <ion-card-content>
-    <p class="name">{{champagne.productName}} {{champagne.vintage}} ({{champagne.packaging}}l)</p>
-    <p class="price">{{champagne.price}} Ft</p>
+    <p class="name">{{champagne.productName}}</p>
+    <p class="name">{{champagne.vintage}} ({{champagne.packaging}}l)</p>
+    <p class="price">{{champagne.price}} USD</p>
   </ion-card-content>
 </ion-card>
 
-<ion-card class="item" appOnHover *ngIf="uid === 'zqB8wNNJXDgqKqR4R4uCGixupDi1'">
+<ion-card class="item" appOnHover *ngIf="uid === 'Pep363jos7Y9Ommh2KCjVpLdD2h1'">
   <ion-item class="action-btn">
     <ion-fab-button class="deletebutton" color="danger" (click)="deleteItem(champagne.id, champagne.productName!, champagne.picture)">
       <ion-icon name="trash-outline"></ion-icon>

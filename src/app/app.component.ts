@@ -42,13 +42,6 @@ export class AppComponent implements OnInit{
 
   logout(): void {
     this.authService.logout();
-
-    /*let currentUrl = this.router.url;
-    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
-    this.router.onSameUrlNavigation = 'reload';
-    this.router.navigate([currentUrl]);*/
-
-    //this.router.navigateByUrl('home');
     window.location.assign('/');
   }
 
@@ -95,10 +88,8 @@ export class AppComponent implements OnInit{
 
   startScan(){
     this.barcodeScanner.scan().then(barcodeData => {
-      //console.log('Barcode data', barcodeData);
       this.router.navigate([barcodeData.text]);
      }).catch(err => {
-        //console.log('Error', err);
      });
   }
 }

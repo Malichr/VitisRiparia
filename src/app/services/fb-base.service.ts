@@ -45,7 +45,7 @@ export class FbBaseService<T extends { id?: string }> {
   // tslint:disable-next-line: typedef
   weakAdd(collectionName: string, data: T) {
     return this.afs.collection(collectionName).add(data).then(
-      result => { /*console.log(result);*/ }, err => { /*console.log(err);*/ }).finally(() => { /*console.log('finally');*/ });
+      result => {}, err => {}).finally(() => {});
   }
 
   getById(collectionName: string, id: string): Observable<any> {
@@ -54,7 +54,7 @@ export class FbBaseService<T extends { id?: string }> {
 
   update(collectionName: string, id: string, data: T): Promise<void> {
     return this.afs.collection(collectionName).doc(id).update(data).then(
-      result => { /*console.log(result);*/ }, err => { /*console.log(err);*/ }).finally(() => { /*console.log('finally');*/ });
+      result => {}, err => {}).finally(() => {});
   }
 
   delete(collectionName: string, id: string): Promise<void> {

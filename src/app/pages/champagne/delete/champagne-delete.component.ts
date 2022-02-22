@@ -23,7 +23,7 @@ export class ChampagneDeleteComponent implements OnInit {
   }
 
   delete(): void {
-    this.service.delete('champagne', this.data.champagneId).then(id => { /*console.log(id);*/ });
+    this.service.delete('champagne', this.data.champagneId).then(id => {});
     this.storage.storage.refFromURL(this.data.downloadUrl).delete();
     this.dialogRef.close();
   }

@@ -13,7 +13,6 @@ import { ChampagneUpdateComponent } from '../update/champagne-update.component';
 })
 export class ChampagneCardComponent implements OnInit {
 
-  //@Input() champagne?: Champagne;
   @Input() champagne: Champagne = {} as any;
   @Output() getChampagne = new EventEmitter<Champagne>();
 
@@ -39,12 +38,8 @@ export class ChampagneCardComponent implements OnInit {
     const dialogRef = this.dialog.open(ChampagneUpdateComponent, {data: this.champagne});
     // tslint:disable-next-line: deprecation
     dialogRef.afterClosed().subscribe((champagne: Champagne) => {
-      //console.log(champagne);
-
         this.service.update('champagne', this.champagne?.id as string, champagne).then(id => { console.log(id); });
-
     }, (err: any) => {
-      //console.warn(err);
     });
   }
 }

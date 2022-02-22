@@ -66,7 +66,7 @@ export class CartAddComponent implements OnInit {
         quantity: this.form.value.quantity,
         picture: this.picture
       };
-      this.service.add('cart', newCart).then((id: any) => { /*console.log(id);*/ });
+      this.service.add('cart', newCart).then((id: any) => {});
     }
   }
 }

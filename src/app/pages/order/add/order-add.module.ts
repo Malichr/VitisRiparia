@@ -8,6 +8,7 @@ import { MatStepperModule } from '@angular/material/stepper';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,7 @@ import { MatIconModule } from '@angular/material/icon';
   ],
   imports: [
     CommonModule, OrderAddRoutingModule, MatStepperModule, FormsModule, ReactiveFormsModule, MatButtonModule, MatIconModule,
-    ContainerModule, MessageModule
+    ContainerModule, MessageModule, MatDialogModule
   ],
   entryComponents: [OrderAddComponent
   ],

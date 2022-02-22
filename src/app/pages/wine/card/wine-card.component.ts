@@ -12,7 +12,6 @@ import { WineDeleteComponent } from '../delete/wine-delete.component';
   styleUrls: ['./wine-card.component.scss']
 })
 export class WineCardComponent implements OnInit {
-  //@Input() wine?: Wine;
   @Input() wine: Wine = {} as any;
   @Output() getWine = new EventEmitter<Wine>();
 
@@ -38,12 +37,8 @@ export class WineCardComponent implements OnInit {
     const dialogRef = this.dialog.open(WineUpdateComponent, {data: this.wine});
     // tslint:disable-next-line: deprecation
     dialogRef.afterClosed().subscribe((wine: Wine) => {
-      //console.log(wine);
-
         this.service.update('wine', this.wine?.id as string, wine).then(id => { console.log(id); });
-
     }, (err: any) => {
-      //console.warn(err);
     });
   }
 }

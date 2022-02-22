@@ -1,3 +1,4 @@
+import { MessageComponent } from './../message/message.component';
 import { SenderService } from './../../../services/sender.service';
 import { Cart } from './../../../shared/models/cart.model';
 import { Order } from './../../../shared/models/order.model';
@@ -5,6 +6,7 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { FbBaseService } from 'src/app/services/fb-base.service';
+import { MatDialog } from '@angular/material/dialog';
 
 declare const paypal: any;
 
@@ -42,7 +44,7 @@ export class OrderAddComponent implements OnInit {
     houseNumber: new FormControl('')
   });
 
-  constructor(private service: FbBaseService<any>, private sender: SenderService) {}
+  constructor(private service: FbBaseService<any>, private sender: SenderService, public dialog: MatDialog) {}
 
   ngOnInit(): void {
     paypal
@@ -52,7 +54,7 @@ export class OrderAddComponent implements OnInit {
             purchase_units:[
               {
                 amount: {
-                  currency: 'HUF',
+                  currency: 'USD',
                   value: this.amount
                 }
               }
@@ -62,12 +64,12 @@ export class OrderAddComponent implements OnInit {
           this.paidFor = true;
           this.orderAdd();
           this.service.deleteCart('cart', this.email, this.cartId);
-          //console.log(order);
-
+          const dialogRef = this.dialog.open(MessageComponent, {
+            data:{paidFor: this.paidFor}
+          });
         },
 
         onError: () => {
-         //console.log(err);
         }
       })
       .render(this.paypalElement?.nativeElement);

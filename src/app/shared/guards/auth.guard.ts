@@ -16,7 +16,7 @@ export class AuthGuard implements CanActivate, CanActivateChild {
       return new Promise((resolve, reject) => {
         this.afAuth.authState.subscribe(user => {
             if (user) {
-                if (user.email === 'va@la.ki') {
+                if (user.email === 'admin@admin.com') {
                   resolve(true);
                 }else{
                   this.router.navigate(['/']);

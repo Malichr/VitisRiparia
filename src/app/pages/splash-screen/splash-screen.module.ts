@@ -8,6 +8,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { FormsModule } from '@angular/forms';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,7 @@ import { FormsModule } from '@angular/forms';
   ],
   imports: [
     CommonModule, SplashScreenRoutingModule, OnHoverModule, ContainerModule, Ng2SearchPipeModule, WineCardModule,
-    ChampagneCardModule, FormsModule
+    ChampagneCardModule, FormsModule, MatSelectModule
   ],
   exports: [SplashScreenComponent]
 })

@@ -49,7 +49,7 @@ export class CommentComponent implements OnInit {
         productId: this.id,
         comment: this.form.value.comment
       };
-      this.service.add('comment', newComment).then((id: any) => { /*console.log(id);*/ });
+      this.service.add('comment', newComment).then((id: any) => {});
     }
   }
 }

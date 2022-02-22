@@ -49,12 +49,8 @@ export class ChampagneListComponent implements OnInit {
     const dialogRef = this.dialog.open(ChampagneAddComponent, {});
     // tslint:disable-next-line: deprecation
     dialogRef.afterClosed().subscribe((champagne: Champagne) => {
-      //console.log(champagne);
-      //if (wine?.productName) {
-        this.service.add('champagne', champagne).then(id => { /*console.log(id);*/ });
-      //}
+        this.service.add('champagne', champagne).then(id => {});
     }, err => {
-      //console.warn(err);
     });
   }
 
