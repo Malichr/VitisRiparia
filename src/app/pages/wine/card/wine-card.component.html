@@ -1,4 +1,4 @@
-<ion-card class="item" id="product" *ngIf="wine" (click)="getWine.emit(wine)" appOnHover class="ion-activatable ripple-parent">
+<ion-card class="item" *ngIf="wine" (click)="getWine.emit(wine)" appOnHover class="ion-activatable ripple-parent">
   <ion-ripple-effect></ion-ripple-effect>
   <div align="center">
     <img src="{{wine.picture}}" alt="Bor">
